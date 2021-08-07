@@ -58,7 +58,7 @@ public class GamePlay
         gameMusic = new Sound(gameBuffer);
         gameMusic.Volume = 15f;
         newGameSet = false;
-        beginGameMessage = new Message("Start", new Vector2f(400, 300));
+        beginGameMessage = new Message("Start", new Vector2f(500, 300));
         beginGameMessage.SetTextSize(46);
         musicStatus = new MusicStatus();
         gameMusicFadeTime = 0f;
@@ -77,17 +77,20 @@ public class GamePlay
         {
             if (gameCountdown == null && itemList == null)
             {
-                StopMusic(MusicStatus.FadeMenu);
-                //menuMusic.Stop();
+                StopMusic(MusicStatus.FadeMenu);                
                 chocobo.Update();
                 StartCountdown();
             }
             else
-            {
-                map.treasure.Depth = chocobo.Update(map.treasure.Position, map.treasure.Depth);
+            {                
                 if (gameCountdown != null)
                 {
                     gameCountdown.textMessage.DisplayedString = SecondsRemaining();
+                    map.treasure.Depth = chocobo.Update(map.treasure.Position, map.treasure.Depth);
+                }
+                else
+                {
+                    chocobo.Update();
                 }
                 if (map.treasure.Depth <= 0)
                 {
@@ -96,19 +99,13 @@ public class GamePlay
                 if (remainingTime <= 0)
                 {
                     SearchBalance();
-                    //play = false;
-                    //chocobo.RemoveText();
-                    //newGameSet = false;
-                    //beginGameMessage = new Message("Start", new Vector2f(400, 300));
-                    //beginGameMessage.SetTextSize(46);
-                    //StopMusic(MusicStatus.FadeGame);
-                    //gameMusic.Stop();
+                    Console.WriteLine("search balance in course");
                 }
             }
         }
         else
         {
-            if (!newGameSet)
+            if (!newGameSet && !musicStatus.HasFlag(MusicStatus.FadeMenu))
             {
                 map.treasure.Depth = 30;
                 gameCountdown = null;
@@ -207,8 +204,9 @@ public class GamePlay
                 {
                     gameCountdown = null;
                     chocobo.RemoveText();
-                    endGameMessage = new Message("No items found...", new Vector2f(400, 300));
+                    endGameMessage = new Message("No items found...", new Vector2f(500, 300));
                     endGameMessage.SetTextSize(24);
+                    Console.WriteLine("no item found");
                 }
             }
             else
@@ -217,11 +215,12 @@ public class GamePlay
                 {
                     gameCountdown = null;
                     chocobo.RemoveText();
-                    endGameMessage = new Message("Items found!", new Vector2f(400, 300));
+                    endGameMessage = new Message("Items found!", new Vector2f(500, 300));
                     endGameMessage.SetTextSize(24);
                     foreach(Item item in itemList)
                     {
                         roundFinalScore += item.GetXPoints();
+                        Console.WriteLine(roundFinalScore);
                     }
                     roundFinalScore += scoreDisplayed;
                 }
@@ -242,16 +241,19 @@ public class GamePlay
                 }
                 else if (itemList.Count > 0)
                 {
-                    totalScore.textMessage.DisplayedString = Convert.ToString(scoreDisplayed < roundFinalScore ? scoreDisplayed += 10 : scoreDisplayed);
+                    totalScore.textMessage.DisplayedString = Convert.ToString(scoreDisplayed < roundFinalScore ? scoreDisplayed += 5 : scoreDisplayed);
                 }
             }
         }
         else
         {
+            scoreDisplayed = roundFinalScore;
+            roundFinalScore = 0;
+            searchBalance = 5f;
             endGameMessage = null;
             play = false;
             newGameSet = false;
-            beginGameMessage = new Message("Start", new Vector2f(400, 300));
+            beginGameMessage = new Message("Start", new Vector2f(500, 300));
             beginGameMessage.SetTextSize(46);
             StopMusic(MusicStatus.FadeGame);
         }
