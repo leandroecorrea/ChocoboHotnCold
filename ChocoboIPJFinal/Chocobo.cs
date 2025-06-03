@@ -138,7 +138,6 @@ public class Chocobo : GameObjectBase, IColisionable
             {
                 acceleration = 0f;
                 animation = Status.MoveRight;
-                Console.WriteLine(acceleration);
             }
             else
             {
@@ -153,7 +152,6 @@ public class Chocobo : GameObjectBase, IColisionable
             {
                 acceleration = 0f;
                 animation = Status.MoveLeft;
-                Console.WriteLine(acceleration);
             }
             else
             {

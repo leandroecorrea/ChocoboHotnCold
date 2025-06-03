@@ -49,7 +49,6 @@ class InvisibleWall : IColisionable
         foreach (InvisibleWall collisionBox in invisibleWalls)
         {
             CollisionObserver.GetInstance().AddToCollisionObserver(collisionBox);
-            Console.WriteLine("added collisionbox");
         }
     }
 

@@ -54,14 +54,12 @@ class CollisionObserver
                             
                         }
                         collisionables[i].OnCollision(collisionables[j]);
-                        Console.WriteLine("collision");
                     }
                     else
                     {
                         if (collisionRegister.Contains(register))
                         {                            
                             collisionRegister.Remove(register);
-                            Console.WriteLine("removed from collision");
                         }
                     }
                 }

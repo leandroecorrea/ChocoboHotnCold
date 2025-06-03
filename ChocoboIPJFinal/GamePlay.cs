@@ -99,7 +99,6 @@ public class GamePlay
                 if (remainingTime <= 0)
                 {
                     SearchBalance();
-                    Console.WriteLine("search balance in course");
                 }
             }
         }
@@ -116,7 +115,6 @@ public class GamePlay
                 menuMusic.Play();
                 menuMusic.Volume = 15f;
                 newGameSet = true;
-                Console.WriteLine("new game set");
             }
             StartGame();
             chocobo.Update();
@@ -206,7 +204,6 @@ public class GamePlay
                     chocobo.RemoveText();
                     endGameMessage = new Message("No items found...", new Vector2f(500, 300));
                     endGameMessage.SetTextSize(24);
-                    Console.WriteLine("no item found");
                 }
             }
             else
@@ -220,7 +217,6 @@ public class GamePlay
                     foreach(Item item in itemList)
                     {
                         roundFinalScore += item.GetXPoints();
-                        Console.WriteLine(roundFinalScore);
                     }
                     roundFinalScore += scoreDisplayed;
                 }
