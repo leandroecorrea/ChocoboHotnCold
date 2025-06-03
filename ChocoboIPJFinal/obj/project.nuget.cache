@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "otJicrx+V1dFFrx0xWRMjI8ASAtKuFCjur5cRUCGEAeYeQYIhHtkIQgUfN3SeIKYsMzs9n4nRouW28S4wewaCg==",
+  "dgSpecHash": "XFoue580G7c=",
   "success": true,
-  "projectFilePath": "C:\\Users\\leand\\OneDrive\\Documentos\\Image\\ChocoboIPJFinal\\ChocoboIPJFinal\\ChocoboIPJFinal.csproj",
+  "projectFilePath": "C:\\Users\\leand\\Documents\\ChocoboHotnCold\\ChocoboIPJFinal\\ChocoboIPJFinal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leand\\.nuget\\packages\\csfml\\2.5.0\\csfml.2.5.0.nupkg.sha512",
     "C:\\Users\\leand\\.nuget\\packages\\sfml.audio\\2.5.0\\sfml.audio.2.5.0.nupkg.sha512",
